@@ -1,14 +1,26 @@
-<script>
+<script lang="js">
   import { onMount } from 'svelte';
   import banner from './assets/images/banner.png';
   import {TechStacks} from './libs/TechStacks';
   import {Projects} from './libs/Projects';
 
   let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  let scroll = {
+    x: window.scrollX,
+    y: window.scrollY,
+  };
+  let expandNavbar = '';
 
   onMount(() => {
     document.documentElement.setAttribute('dark-mode', localStorage.getItem('dark-mode'));
-  })
+
+    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("mousemove", handleMouse);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("mousemove", handleMouse);
+    };
+  });
 
   function toggleTheme(){ 
     isDarkMode = !isDarkMode;
@@ -16,10 +28,22 @@
     document.documentElement.setAttribute('dark-mode', String(isDarkMode));
     // console.log(isDarkMode);
   };
+
+  function handleScroll(){
+    scroll.y = window.scrollY;
+  };
+
+  function handleMouse(event){
+
+  };
+
+  $: {
+    expandNavbar = scroll.y > 400 ? 'expand' : '';
+  };
 </script>
 
 <div class="wrapper">
-  <header>
+  <header class="{expandNavbar}">
     <nav>
       <div class="container">
         <div class="nav-left">
