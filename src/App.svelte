@@ -9,7 +9,13 @@
     x: window.scrollX,
     y: window.scrollY,
   };
+  let mouse = {
+    x: 0,
+    y: 0,
+  };
+
   let expandNavbar = '';
+  let mousePosition = 0;
 
   onMount(() => {
     document.documentElement.setAttribute('dark-mode', localStorage.getItem('dark-mode'));
@@ -34,11 +40,13 @@
   };
 
   function handleMouse(event){
-
+    mouse.x = event.clientX;
+    mouse.y = event.clientY;
   };
 
   $: {
     expandNavbar = scroll.y > 400 ? 'expand' : '';
+    mousePosition = mouse.x - (window.innerWidth / 2);
   };
 </script>
 
@@ -75,14 +83,33 @@
     </div>
   </section>
   <main class="container">
+    <div class="hr" style="transform: translateX({mousePosition}px)"></div>
     <h2 class="title">My Projects</h2>
-    {#each $Projects as project, i}
-      <div class="card">
-        {project.name}
-      </div>
-    {/each}
+    <div class="card-list">
+      {#each $Projects as project, i}
+        <div class="card">
+          <div class="card-img">
+            <img src="{project.banner}" alt="">
+          </div>
+          <div class="card-body">
+            <h3>{project.name}</h3>
+            <p>{project.text}</p>
+            <ul class="p-0">
+              {#each project.stacks as stack}
+                <li style="background-color: {$TechStacks[stack].background};">{$TechStacks[stack].name}</li>
+              {/each}
+            </ul>
+          </div>
+        </div>
+      {/each}
+    </div>
     <h2 class="title">My Artwork</h2>
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum aut in delectus consequuntur iusto voluptates pariatur? Provident dolores possimus nemo quisquam repellat. Ipsa odio neque fugiat ex libero sapiente harum!
+    <div class="hr" style="transform: translateX({mousePosition}px)"></div>
     <h2 class="title">Socials</h2>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente voluptate modi facere inventore cum nesciunt necessitatibus tenetur dignissimos deleniti laboriosam. Enim veritatis ad architecto rem non! Reprehenderit mollitia omnis dolor!
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi illum eius veniam et quaerat natus impedit, autem aliquid ea voluptates soluta. Modi quo exercitationem, adipisci illum iusto vel tempora neque.
+    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum aut in delectus consequuntur iusto voluptates pariatur? Provident dolores possimus nemo quisquam repellat. Ipsa odio neque fugiat ex libero sapiente harum!
   </main>
   <footer style="background-image: url({banner});">
     <div class="container"></div>
@@ -90,5 +117,5 @@
 </div>
 
 <style>
-  
+
 </style>
