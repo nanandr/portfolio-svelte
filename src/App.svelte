@@ -103,7 +103,7 @@
             <ul class="p-0">
               <li style="background-color: #22272E;"><a style="color:white; background-color: transparent !important;" href="{project.url.github}" target="_blank">View on Github</a></li>
               {#if project.url.web}
-                <li style="background-color: #eee;"><a style="color:black !important; background-color: transparent !important;" href="{project.url.github}" target="_blank">View Live Demo</a></li>
+                <li style="background-color: #eee;"><a style="color:black !important; background-color: transparent !important;" href="{project.url.web}" target="_blank">View Live Demo</a></li>
               {/if}
             </ul>
           </div>
