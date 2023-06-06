@@ -22,27 +22,19 @@
 
 /* C O L O R  S C H E M E */
 
-[dark-mode="true"]{
+[dark-mode="true"], [dark-mode="true"] nav, [dark-mode="true"] .nav-link, [dark-mode="true"] a{
   color: var(--white) !important;
   background-color: var(--dark) !important;
 }
 [dark-mode="true"] nav{
-  background-color: var(--dark) !important;
   box-shadow: var(--black) 1px 1px 5px !important;
 }
-[dark-mode="true"] .nav-link{
-  color: var(--white);
-}
-[dark-mode="false"]{
+[dark-mode="false"], [dark-mode="false"] nav, [dark-mode="false"] .nav-link{
   color: var(--dark) !important;
   background-color: var(--white) !important;
 }
 [dark-mode="false"] nav{
-  background-color: var(--white) !important;
   box-shadow: var(--black) 1px 1px 5px !important;
-}
-[dark-mode="false"] .nav-link{
-  color: var(--dark);
 }
 
 /* G L O B A L */
@@ -54,6 +46,8 @@
   background-size: cover;
   object-fit: cover;
   text-decoration: none;
+}
+div, nav, header, nav *{
   transition: background-color 0.2s ease;
 }
 ::-webkit-scrollbar{
@@ -102,7 +96,7 @@ nav{
   border-radius: 32px;
   background-color: var(--white);
   box-shadow: var(--grey) 1px 1px 5px;
-  transition: width 0.5s ease, border-radius 0.7s ease;
+  transition: width 0.5s ease, border-radius 0.7s ease, background-color 0.2s ease;
 }
 nav .container{
   display: flex;
@@ -112,10 +106,8 @@ nav .container{
 main{
   display: flex;
   flex-direction: column;
-  position: relative;
   gap: 16px;
   min-height: 1080px;
-  z-index: -1;
   overflow-x: hidden;
 }
 .hr{
@@ -125,6 +117,7 @@ main{
   height: 2px;
   /* background-color: var(--primary); */
   background-image: linear-gradient(to right, transparent, var(--primary), transparent);
+  z-index: -1;
 }
 footer .container{
   min-height: 120px;
@@ -210,6 +203,7 @@ footer .container{
 }
 .card-img{
   width: 420px;
+  user-select: none;
 }
 .card-img img{
   width: 100%;
@@ -231,6 +225,27 @@ footer .container{
 .card-body ul li{
   padding: 4px 8px;
   font-size: smaller;
+}
+.socials{
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  min-width: 720px;
+  min-height: 200px;
+}
+.socials ul{
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding: 0px !important;
+  margin: 0px !important;
+  justify-content: space-between;
+  width: 100%;
+}
+.socials ul li a{
+  z-index: 999;
 }
 
 /* A D D I T I O N A L */
@@ -275,6 +290,15 @@ footer .container{
   }
   .card-body p{
     max-width: 100%;
+  }
+  .stacks ul li{
+    padding: 4px 6px;
+  }
+  .hr{
+    display: none;
+  }
+  .socials{
+    min-width: 100% !important;
   }
 }
 @media (min-width: 2056px){

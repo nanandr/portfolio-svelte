@@ -3,6 +3,8 @@
   import banner from './assets/images/banner.png';
   import {TechStacks} from './libs/TechStacks';
   import {Projects} from './libs/Projects';
+  import {Artworks} from './libs/Artworks';
+  import {Socials} from './libs/Socials';
 
   let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
   let scroll = {
@@ -32,7 +34,6 @@
     isDarkMode = !isDarkMode;
     localStorage.setItem('dark-mode', String(isDarkMode));
     document.documentElement.setAttribute('dark-mode', String(isDarkMode));
-    // console.log(isDarkMode);
   };
 
   function handleScroll(){
@@ -59,7 +60,7 @@
         </div>
         <div class="nav-right">
           <a href="#projects" class="nav-link">Projects</a>
-          <button on:click={toggleTheme}>toggle</button>
+          <!-- <button on:click={toggleTheme}>toggle</button> -->
         </div>
       </div>
     </nav>
@@ -87,7 +88,7 @@
     <h2 class="title">My Projects</h2>
     <div class="card-list">
       {#each $Projects as project, i}
-        <div class="card">
+        <article class="card">
           <div class="card-img">
             <img src="{project.banner}" alt="">
           </div>
@@ -99,17 +100,31 @@
                 <li style="background-color: {$TechStacks[stack].background};">{$TechStacks[stack].name}</li>
               {/each}
             </ul>
+            <ul class="p-0">
+              <li style="background-color: #22272E;"><a style="color:white; background-color: transparent !important;" href="{project.url.github}" target="_blank">View on Github</a></li>
+              {#if project.url.web}
+                <li style="background-color: #eee;"><a style="color:black !important; background-color: transparent !important;" href="{project.url.github}" target="_blank">View Live Demo</a></li>
+              {/if}
+            </ul>
           </div>
-        </div>
+        </article>
       {/each}
     </div>
     <h2 class="title">My Artwork</h2>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum aut in delectus consequuntur iusto voluptates pariatur? Provident dolores possimus nemo quisquam repellat. Ipsa odio neque fugiat ex libero sapiente harum!
+    <div class="grid-list">
+      {#each $Artworks as artwork}
+        <div class="grid" style="background-image: url({artwork.link});"></div>
+      {/each}
+    </div>
     <div class="hr" style="transform: translateX({mousePosition}px)"></div>
     <h2 class="title">Socials</h2>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente voluptate modi facere inventore cum nesciunt necessitatibus tenetur dignissimos deleniti laboriosam. Enim veritatis ad architecto rem non! Reprehenderit mollitia omnis dolor!
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi illum eius veniam et quaerat natus impedit, autem aliquid ea voluptates soluta. Modi quo exercitationem, adipisci illum iusto vel tempora neque.
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Illum aut in delectus consequuntur iusto voluptates pariatur? Provident dolores possimus nemo quisquam repellat. Ipsa odio neque fugiat ex libero sapiente harum!
+    <div class="socials">
+      <ul>
+        {#each $Socials as social}
+          <li><a href="{social.url}" target="_blank">{social.name}</a></li>
+        {/each}
+      </ul>
+    </div>
   </main>
   <footer style="background-image: url({banner});">
     <div class="container"></div>
