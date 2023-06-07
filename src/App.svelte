@@ -60,13 +60,13 @@
         </div>
         <div class="nav-right">
           <a href="#projects" class="nav-link">Projects</a>
-          <!-- <button on:click={toggleTheme}>toggle</button> -->
+          <button on:click={toggleTheme}>toggle</button>
         </div>
       </div>
     </nav>
   </header>
   <section class="banner">
-    <div class="banner-img" style="background-image: url({banner});">
+    <div class="banner-img" style="background-image: url({banner}); z-index: -1;">
       <div class="container">
         <h1 class="title">Hello! I'm Nandana Rafi Ardika</h1>
       </div>
@@ -89,23 +89,27 @@
     <div class="card-list">
       {#each $Projects as project, i}
         <article class="card">
-          <div class="card-img">
-            <img src="{project.banner}" alt="">
-          </div>
-          <div class="card-body">
-            <h3>{project.name}</h3>
-            <p>{project.text}</p>
-            <ul class="p-0">
-              {#each project.stacks as stack}
-                <li style="background-color: {$TechStacks[stack].background};">{$TechStacks[stack].name}</li>
-              {/each}
-            </ul>
-            <ul class="p-0">
-              <li style="background-color: #22272E;"><a style="color:white; background-color: transparent !important;" href="{project.url.github}" target="_blank">View on Github</a></li>
-              {#if project.url.web}
-                <li style="background-color: #eee;"><a style="color:black !important; background-color: transparent !important;" href="{project.url.web}" target="_blank">View Live Demo</a></li>
-              {/if}
-            </ul>
+          <div class="card-wrapper">
+            <div class="card-img">
+              <img src="{project.banner}" alt="">
+            </div>
+            <div class="card-body">
+              <h3>{project.name}</h3>
+              <div class="card-description">
+                <p>{project.text}</p>
+                <ul class="p-0">
+                  {#each project.stacks as stack}
+                    <li style="background-color: {$TechStacks[stack].background};">{$TechStacks[stack].name}</li>
+                  {/each}
+                </ul>
+                <ul class="p-0 link-list">
+                  <li style="background-color: #22272E;"><a style="color:white; background-color: transparent !important;" href="{project.url.github}" target="_blank">View on Github</a></li>
+                  {#if project.url.web}
+                    <li style="background-color: #eee;"><a style="color:black !important; background-color: transparent !important;" href="{project.url.web}" target="_blank">View Live Demo</a></li>
+                  {/if}
+                </ul>
+              </div>
+            </div>
           </div>
         </article>
       {/each}
@@ -113,7 +117,15 @@
     <h2 class="title">My Artwork</h2>
     <div class="grid-list">
       {#each $Artworks as artwork}
-        <div class="grid" style="background-image: url({artwork.link});"></div>
+        {#if artwork.type == 'image'}
+          <div class="grid" style="background-image: url({artwork.url});"></div>
+        {:else if artwork.type == 'video'}
+          <div class="grid">
+            <video autoplay loop width="100%" height="100%">
+              <source src="{artwork.url}" type="video/mp4">
+            </video>
+          </div>
+        {/if}
       {/each}
     </div>
     <div class="hr" style="transform: translateX({mousePosition}px)"></div>
