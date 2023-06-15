@@ -1,6 +1,9 @@
 <script lang="js">
   import { onMount } from 'svelte';
+
   import banner from './assets/images/banner.png';
+  import profile from './assets/images/girl.png';
+
   import {TechStacks} from './libs/TechStacks';
   import {Summary} from './libs/Summary';
   import {Projects} from './libs/Projects';
@@ -71,8 +74,9 @@
   <section class="banner">
     <div class="banner-img" style="background-image: url({banner}); z-index: -1;">
       <div class="container">
-        <h1 class="title">Hello! I'm Nandana Rafi Ardika</h1>
+        <h1 class="title">Nandana Rafi Ardika</h1>
       </div>
+      <div class="profile" style="background-image: url({profile});"></div>
     </div>
     <div class="content container">
       <h2>📚 Student, 💻 Web Programmer, 🎨 Artist</h2>
