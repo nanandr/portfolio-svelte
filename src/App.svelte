@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import banner from './assets/images/banner.png';
   import {TechStacks} from './libs/TechStacks';
+  import {Summary} from './libs/Summary';
   import {Projects} from './libs/Projects';
   import {Artworks} from './libs/Artworks';
   import {Socials} from './libs/Socials';
@@ -75,13 +76,21 @@
     </div>
     <div class="content container">
       <h2>📚 Student, 💻 Web Programmer, 🎨 Artist</h2>
-      <div class="stacks">
-        <h2 class="font-light">Tech Stacks</h2>
-        <ul class="p-0">
-          {#each $TechStacks as stack, i}
-            <li style="background-color: {stack.background};">{stack.name}</li>
+      <div class="summary">
+        <div class="stacks">
+          <h2 class="font-light">Tech Stacks</h2>
+          <ul class="p-0">
+            {#each $TechStacks as stack, i}
+              <li style="background-color: {stack.background};">{stack.name}</li>
+            {/each}
+          </ul>
+        </div>
+        <article>
+          <h2 class="font-light">Experiences</h2>
+          {#each $Summary as s}
+            <p>{s}</p>
           {/each}
-        </ul>
+        </article>
       </div>
     </div>
   </section>

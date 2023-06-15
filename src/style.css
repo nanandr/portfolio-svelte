@@ -29,7 +29,7 @@
 [dark-mode="true"] nav{
   box-shadow: var(--black) 1px 1px 5px !important;
 }
-[dark-mode="false"], [dark-mode="false"] nav, [dark-mode="false"] .nav-link, [dark-mode="false"] .grid{
+[dark-mode="false"], [dark-mode="false"] nav, [dark-mode="false"] .nav-link, [dark-mode="false"] .grid, [dark-mode="false"] .theme span{
   color: var(--dark) !important;
   background-color: var(--white) !important;
 }
@@ -152,7 +152,7 @@ footer .container{
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
 }
 .banner *::selection{
   background-color: var(--white);
@@ -161,15 +161,26 @@ footer .container{
 .banner .content{
   display: inherit;
   flex-direction: inherit;
-  flex-grow: 1;
-  max-height: 240px;
+  min-height: 240px;
   gap: 16px;
+}
+.banner .content .summary{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.banner .content .summary article{
+  max-width: 420px;
+  text-align: end;
 }
 .banner-img{
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   width: inherit;
+  flex-grow: 1;
+  max-height: 80vh;
   height: 80%;
   background-color: var(--primary);
 }
@@ -366,6 +377,10 @@ footer .container{
   }
 }
 @media (max-width: 800px){
+  .banner .content .summary article{
+    text-align: start;
+    margin-top: 16px;
+  }
   .card{
     width: 100% !important;
   }
@@ -384,7 +399,7 @@ footer .container{
 }
 @media (min-width: 2056px){
   .banner{
-    height: 1080px !important;
+    min-height: 1080px !important;
   }
   body{
     min-height: 100vh !important;
