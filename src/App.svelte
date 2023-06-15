@@ -60,7 +60,9 @@
         </div>
         <div class="nav-right">
           <a href="#projects" class="nav-link">Projects</a>
-          <button on:click={toggleTheme}>toggle</button>
+          <button class="theme" on:click={toggleTheme}>
+            <span class="fa-solid {isDarkMode ? 'fa-moon' : 'fa-sun'}"></span>
+          </button>
         </div>
       </div>
     </nav>
@@ -121,7 +123,7 @@
           <div class="grid" style="background-image: url({artwork.url});"></div>
         {:else if artwork.type == 'video'}
           <div class="grid">
-            <video autoplay loop width="100%" height="100%">
+            <video autoplay muted loop width="100%" height="100%">
               <source src="{artwork.url}" type="video/mp4">
             </video>
           </div>
