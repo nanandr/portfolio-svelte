@@ -199,6 +199,7 @@ footer .container{
   flex-grow: 1;
   max-height: 80vh;
   height: 80%;
+  min-height: 560px;
   background-color: var(--primary);
   overflow: hidden !important;
 }
@@ -321,7 +322,7 @@ footer .container{
 
 /* G R I D */
 .grid-list{
-  width: auto !important;
+  width: 100% !important;
   gap: 0px !important;
   justify-content: start;
   margin: auto;

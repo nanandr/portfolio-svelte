@@ -76,7 +76,7 @@
       <div class="container">
         <h1 class="title">Nandana Rafi Ardika</h1>
       </div>
-      <div class="profile" style="background-image: url({profile});"></div>
+      <!-- <div class="profile" style="background-image: url({profile});"></div> -->
     </div>
     <div class="content container">
       <h2>📚 Student, 💻 Web Programmer, 🎨 Artist</h2>
@@ -157,7 +157,3 @@
     <div class="container"></div>
   </footer>
 </div>
-
-<style>
-
-</style>

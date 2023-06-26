@@ -1,6 +1,16 @@
 import { writable } from "svelte/store";
 
 export const Projects = writable([
+    // {
+    //     name: 'RPL Vote',
+    //     banner: '',
+    //     url: {
+    //         github: '',
+    //         web: '',
+    //     },
+    //     text: 'An upcoming project made for making vote easier',
+    //     stacks: [1, 2, 5],
+    // },
     {
         name: 'File Manager',
         banner: 'https://filemanager.nandanarafi.my.id/uploads/1683960643_filemanagerposter.png',
